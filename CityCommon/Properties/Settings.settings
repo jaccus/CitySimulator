@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="City.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="poi_file" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">config/poi_types.txt</Value>
+    </Setting>
+    <Setting Name="currencies_file" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">config/currencies.txt</Value>
+    </Setting>
+    <Setting Name="banks_file" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">config/banks.txt</Value>
+    </Setting>
+    <Setting Name="male_file" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">config/male_1000.csv</Value>
+    </Setting>
+    <Setting Name="female_file" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">config/female_1000.csv</Value>
+    </Setting>
+    <Setting Name="google_maps_key" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AIzaSyDiSOffUcKiuvNTrtsAkPboMFjd8BTASlo</Value>
+    </Setting>
+    <Setting Name="bing_maps_key" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AvGiJ9YMGSz5r1LHOzNWE39zVvzv8MY7mXZUIUxienZxhmi78AMYleEP3i6DSx6y</Value>
+    </Setting>
+    <Setting Name="navigation_xml" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">config/navigation.xml</Value>
+    </Setting>
+    <Setting Name="ce_schema" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">City.edmx.sqlce</Value>
+    </Setting>
+    <Setting Name="ce_dbname" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CityCompact.sdf</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

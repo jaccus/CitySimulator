@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<navigations>
+  <navigation Label="World" Latitude="0" Longitude="0" Zoom="2" />
+  <navigation Label="New York" Latitude="40.7199" Longitude="-74.0030" Zoom="12" />
+  <navigation Label="Kraków" Latitude="50.075651" Longitude="19.943619" Zoom="12" />
+  <navigation Label="Warszawa" Latitude="52.238313" Longitude="21.012726" Zoom="12" />
+</navigations>

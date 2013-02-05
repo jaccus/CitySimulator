@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="City.NavigatorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Name="navigatorControl">
+    <StackPanel>
+        <Label Name="navigatorLabel" Content="Navigator" HorizontalAlignment="Center"/>
+        <StackPanel Name="navigationButtonsPanel"/>
+    </StackPanel>
+</UserControl>

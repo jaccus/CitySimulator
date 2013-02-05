@@ -1,0 +1,33 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" 
+             xmlns:City="clr-namespace:City" x:Class="City.DistrictArchitectPage" FontSize="14">
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Background="White" Grid.Column="0" MaxWidth="200">
+            <GroupBox Header="District" Name="selectedPolygonGroupBox" DockPanel.Dock="Top">
+                <StackPanel>
+                    <Label Name="districtNameLabel" Content="Name" HorizontalAlignment="Center" FontWeight="Bold" />
+                    <TextBox Name="districtNameTextBox" 
+                         Text="{Binding SelectedPolygonName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         HorizontalAlignment="Center" HorizontalContentAlignment="Stretch" TextAlignment="Center" MinWidth="60" />
+
+                    <Label Name="districtPopulationLabel" Content="Population" HorizontalAlignment="Center" FontWeight="Bold" />
+                    <TextBox Name="districtPopulationTextBox" MaxLength="9" PreviewTextInput="PreviewTextInput"
+                         Text="{Binding SelectedPolygonPopulation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         HorizontalAlignment="Center" HorizontalContentAlignment="Stretch" TextAlignment="Center" 
+                             MinWidth="60"/>
+
+                    <Button Name="deleteButton" Content="Remove" Click="DeleteBtnClick" FontWeight="Bold" />
+                </StackPanel>
+            </GroupBox>
+            <City:NavigatorControl x:Name="navigatorControl" DockPanel.Dock="Bottom" 
+                                   HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+        </DockPanel>
+        <m:Map Grid.Column="1" Name="MyMap" ZoomLevel="2"/>
+        
+    </Grid>
+</UserControl>

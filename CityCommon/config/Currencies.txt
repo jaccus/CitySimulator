@@ -1,0 +1,4 @@
+﻿PLN
+EUR
+CHF
+GBP

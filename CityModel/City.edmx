@@ -1,0 +1,1361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="City.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CityStoreContainer">
+    <EntitySet Name="Districts" EntityType="City.Store.Districts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="People" EntityType="City.Store.People" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreditCards" EntityType="City.Store.CreditCards" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MapPoints" EntityType="City.Store.MapPoints" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Banks" EntityType="City.Store.Banks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Currencies" EntityType="City.Store.Currencies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PoiTypes" EntityType="City.Store.PoiTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Transactions" EntityType="City.Store.Transactions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Demands" EntityType="City.Store.Demands" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Configurations" EntityType="City.Store.Configurations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonTemplates" EntityType="City.Store.PersonTemplates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pois" EntityType="City.Store.Pois" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Addresses" EntityType="City.Store.Addresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SelectionMethods" EntityType="City.Store.SelectionMethods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CircleAreas" EntityType="City.Store.CircleAreas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PoiPoiType" EntityType="City.Store.PoiPoiType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConfigurationPoiType" EntityType="City.Store.ConfigurationPoiType" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CreditCardPerson" Association="City.Store.CreditCardPerson">
+      <End Role="CreditCard" EntitySet="CreditCards" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="CreditCardTransactions" Association="City.Store.CreditCardTransactions">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="CreditCard" EntitySet="CreditCards" />
+    </AssociationSet>
+    <AssociationSet Name="PoiTransaction" Association="City.Store.PoiTransaction">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="Poi" EntitySet="Pois" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoiPoiType_Poi" Association="City.Store.FK_PoiPoiType_Poi">
+      <End Role="Poi" EntitySet="Pois" />
+      <End Role="PoiPoiType" EntitySet="PoiPoiType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoiPoiType_PoiType" Association="City.Store.FK_PoiPoiType_PoiType">
+      <End Role="PoiType" EntitySet="PoiTypes" />
+      <End Role="PoiPoiType" EntitySet="PoiPoiType" />
+    </AssociationSet>
+    <AssociationSet Name="CreditCardCurrency" Association="City.Store.CreditCardCurrency">
+      <End Role="CreditCard" EntitySet="CreditCards" />
+      <End Role="Currency" EntitySet="Currencies" />
+    </AssociationSet>
+    <AssociationSet Name="PersonDemand" Association="City.Store.PersonDemand">
+      <End Role="Demand" EntitySet="Demands" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="DemandPoiType" Association="City.Store.DemandPoiType">
+      <End Role="Demand" EntitySet="Demands" />
+      <End Role="PoiType" EntitySet="PoiTypes" />
+    </AssociationSet>
+    <AssociationSet Name="CreditCardBank" Association="City.Store.CreditCardBank">
+      <End Role="CreditCard" EntitySet="CreditCards" />
+      <End Role="Bank" EntitySet="Banks" />
+    </AssociationSet>
+    <AssociationSet Name="AddressPerson" Association="City.Store.AddressPerson">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="DistrictAddress" Association="City.Store.DistrictAddress">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="ConfigurationDistrict" Association="City.Store.ConfigurationDistrict">
+      <End Role="Configuration" EntitySet="Configurations" />
+      <End Role="District" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="TransactionDemand" Association="City.Store.TransactionDemand">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="Demand" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConfigurationPoiType_Configuration" Association="City.Store.FK_ConfigurationPoiType_Configuration">
+      <End Role="Configuration" EntitySet="Configurations" />
+      <End Role="ConfigurationPoiType" EntitySet="ConfigurationPoiType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConfigurationPoiType_PoiType" Association="City.Store.FK_ConfigurationPoiType_PoiType">
+      <End Role="PoiType" EntitySet="PoiTypes" />
+      <End Role="ConfigurationPoiType" EntitySet="ConfigurationPoiType" />
+    </AssociationSet>
+    <AssociationSet Name="DistrictMapPoint" Association="City.Store.DistrictMapPoint">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="MapPoint" EntitySet="MapPoints" />
+    </AssociationSet>
+    <AssociationSet Name="PersonPersonTemplate" Association="City.Store.PersonPersonTemplate">
+      <End Role="Person" EntitySet="People" />
+      <End Role="PersonTemplate" EntitySet="PersonTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="AddressMapPoint" Association="City.Store.AddressMapPoint">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="MapPoint" EntitySet="MapPoints" />
+    </AssociationSet>
+    <AssociationSet Name="PoiMapPoint" Association="City.Store.PoiMapPoint">
+      <End Role="Poi" EntitySet="Pois" />
+      <End Role="MapPoint" EntitySet="MapPoints" />
+    </AssociationSet>
+    <AssociationSet Name="ConfigurationPois" Association="City.Store.ConfigurationPois">
+      <End Role="Configuration" EntitySet="Configurations" />
+      <End Role="Poi" EntitySet="Pois" />
+    </AssociationSet>
+    <AssociationSet Name="SelectionMethodConfiguration" Association="City.Store.SelectionMethodConfiguration">
+      <End Role="SelectionMethod" EntitySet="SelectionMethods" />
+      <End Role="Configuration" EntitySet="Configurations" />
+    </AssociationSet>
+    <AssociationSet Name="ConfigurationCircleArea" Association="City.Store.ConfigurationCircleArea">
+      <End Role="Configuration" EntitySet="Configurations" />
+      <End Role="CircleArea" EntitySet="CircleAreas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Districts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Population" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Name" Type="nvarchar" Nullable="true" />
+    <Property Name="Configuration_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Address_Id" Type="int" Nullable="true" />
+    <Property Name="Template_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreditCards">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Balance" Type="float" Nullable="false" />
+    <Property Name="Limit" Type="float" Nullable="false" />
+    <Property Name="Number" Type="nvarchar" Nullable="false" />
+    <Property Name="Owner_Id" Type="int" Nullable="false" />
+    <Property Name="Currency_Id" Type="int" Nullable="false" />
+    <Property Name="Bank_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MapPoints">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lat" Type="float" Nullable="false" />
+    <Property Name="Lng" Type="float" Nullable="false" />
+    <Property Name="DistrictMapPoint_MapPoint_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Banks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currencies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PoiTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" />
+    <Property Name="Frequency" Type="float" Nullable="false" DefaultValue="1" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
+    <Property Name="CreditCard_Id" Type="int" Nullable="false" />
+    <Property Name="Poi_Id" Type="int" Nullable="false" />
+    <Property Name="Demand_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Demands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fulfilled" Type="bit" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+    <Property Name="PoiType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Configurations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="SimulationStartDate" Type="datetime" Nullable="false" />
+    <Property Name="SimulationEndDate" Type="datetime" Nullable="false" />
+    <Property Name="PersonDemandsPerDay" Type="float" Nullable="false" />
+    <Property Name="CreditCardBalanceMin" Type="int" Nullable="false" />
+    <Property Name="CreditCardBalanceMax" Type="int" Nullable="false" />
+    <Property Name="CreditCardLimitMin" Type="int" Nullable="false" />
+    <Property Name="CreditCardLimitMax" Type="int" Nullable="false" />
+    <Property Name="TransactionValueMin" Type="int" Nullable="false" />
+    <Property Name="TransactionValueMax" Type="int" Nullable="false" />
+    <Property Name="SelectionMethod_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonTemplates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" />
+    <Property Name="IsMale" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pois">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="Vicinity" Type="nvarchar" Nullable="false" />
+    <Property Name="MapPoint_Id" Type="int" Nullable="false" />
+    <Property Name="Configuration_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Addresses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddressLine" Type="nvarchar" Nullable="true" />
+    <Property Name="District_Id" Type="int" Nullable="false" />
+    <Property Name="MapPoint_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SelectionMethods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CircleAreas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lat" Type="float" Nullable="false" />
+    <Property Name="Lng" Type="float" Nullable="false" />
+    <Property Name="Range" Type="float" Nullable="false" />
+    <Property Name="Configuration_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PoiPoiType">
+    <Key>
+      <PropertyRef Name="PoiPoiType_PoiType_Id" />
+      <PropertyRef Name="Type_Id" />
+    </Key>
+    <Property Name="PoiPoiType_PoiType_Id" Type="int" Nullable="false" />
+    <Property Name="Type_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConfigurationPoiType">
+    <Key>
+      <PropertyRef Name="ConfigurationPoiType_PoiType_Id" />
+      <PropertyRef Name="PoiTypes_Id" />
+    </Key>
+    <Property Name="ConfigurationPoiType_PoiType_Id" Type="int" Nullable="false" />
+    <Property Name="PoiTypes_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CreditCardPerson">
+    <End Role="CreditCard" Type="City.Store.CreditCards" Multiplicity="*" />
+    <End Role="Person" Type="City.Store.People" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CreditCard">
+        <PropertyRef Name="Owner_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CreditCardTransactions">
+    <End Role="Transaction" Type="City.Store.Transactions" Multiplicity="*" />
+    <End Role="CreditCard" Type="City.Store.CreditCards" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="CreditCard">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="CreditCard_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PoiTransaction">
+    <End Role="Transaction" Type="City.Store.Transactions" Multiplicity="*" />
+    <End Role="Poi" Type="City.Store.Pois" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Poi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="Poi_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CreditCardCurrency">
+    <End Role="CreditCard" Type="City.Store.CreditCards" Multiplicity="*" />
+    <End Role="Currency" Type="City.Store.Currencies" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CreditCard">
+        <PropertyRef Name="Currency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonDemand">
+    <End Role="Demand" Type="City.Store.Demands" Multiplicity="*" />
+    <End Role="Person" Type="City.Store.People" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demand">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DemandPoiType">
+    <End Role="Demand" Type="City.Store.Demands" Multiplicity="*" />
+    <End Role="PoiType" Type="City.Store.PoiTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PoiType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demand">
+        <PropertyRef Name="PoiType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CreditCardBank">
+    <End Role="CreditCard" Type="City.Store.CreditCards" Multiplicity="*" />
+    <End Role="Bank" Type="City.Store.Banks" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CreditCard">
+        <PropertyRef Name="Bank_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AddressPerson">
+    <End Role="Address" Type="City.Store.Addresses" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Person" Type="City.Store.People" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="Address_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DistrictAddress">
+    <End Role="District" Type="City.Store.Districts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Address" Type="City.Store.Addresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="District_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConfigurationDistrict">
+    <End Role="Configuration" Type="City.Store.Configurations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="District" Type="City.Store.Districts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Configuration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="Configuration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransactionDemand">
+    <End Role="Transaction" Type="City.Store.Transactions" Multiplicity="*" />
+    <End Role="Demand" Type="City.Store.Demands" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Demand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="Demand_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DistrictMapPoint">
+    <End Role="District" Type="City.Store.Districts" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MapPoint" Type="City.Store.MapPoints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MapPoint">
+        <PropertyRef Name="DistrictMapPoint_MapPoint_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonPersonTemplate">
+    <End Role="Person" Type="City.Store.People" Multiplicity="*" />
+    <End Role="PersonTemplate" Type="City.Store.PersonTemplates" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="PersonTemplate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="Template_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AddressMapPoint">
+    <End Role="Address" Type="City.Store.Addresses" Multiplicity="*" />
+    <End Role="MapPoint" Type="City.Store.MapPoints" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MapPoint">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="MapPoint_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PoiMapPoint">
+    <End Role="Poi" Type="City.Store.Pois" Multiplicity="*" />
+    <End Role="MapPoint" Type="City.Store.MapPoints" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MapPoint">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Poi">
+        <PropertyRef Name="MapPoint_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConfigurationPois">
+    <End Role="Configuration" Type="City.Store.Configurations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Poi" Type="City.Store.Pois" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Configuration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Poi">
+        <PropertyRef Name="Configuration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SelectionMethodConfiguration">
+    <End Role="SelectionMethod" Type="City.Store.SelectionMethods" Multiplicity="1" />
+    <End Role="Configuration" Type="City.Store.Configurations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SelectionMethod">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Configuration">
+        <PropertyRef Name="SelectionMethod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConfigurationCircleArea">
+    <End Role="Configuration" Type="City.Store.Configurations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CircleArea" Type="City.Store.CircleAreas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Configuration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CircleArea">
+        <PropertyRef Name="Configuration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoiPoiType_Poi">
+    <End Role="Poi" Type="City.Store.Pois" Multiplicity="1" />
+    <End Role="PoiPoiType" Type="City.Store.PoiPoiType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PoiPoiType">
+        <PropertyRef Name="PoiPoiType_PoiType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoiPoiType_PoiType">
+    <End Role="PoiPoiType" Type="City.Store.PoiPoiType" Multiplicity="*" />
+    <End Role="PoiType" Type="City.Store.PoiTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PoiType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PoiPoiType">
+        <PropertyRef Name="Type_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConfigurationPoiType_Configuration">
+    <End Role="Configuration" Type="City.Store.Configurations" Multiplicity="1" />
+    <End Role="ConfigurationPoiType" Type="City.Store.ConfigurationPoiType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Configuration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConfigurationPoiType">
+        <PropertyRef Name="ConfigurationPoiType_PoiType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConfigurationPoiType_PoiType">
+    <End Role="ConfigurationPoiType" Type="City.Store.ConfigurationPoiType" Multiplicity="*" />
+    <End Role="PoiType" Type="City.Store.PoiTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PoiType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConfigurationPoiType">
+        <PropertyRef Name="PoiTypes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="City" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="CityContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Districts" EntityType="City.District" />
+          <EntitySet Name="People" EntityType="City.Person" />
+          <EntitySet Name="CreditCards" EntityType="City.CreditCard" />
+          <EntitySet Name="MapPoints" EntityType="City.MapPoint" />
+          <AssociationSet Name="CreditCardPerson" Association="City.CreditCardPerson">
+            <End Role="CreditCard" EntitySet="CreditCards" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <EntitySet Name="Banks" EntityType="City.Bank" />
+          <EntitySet Name="Currencies" EntityType="City.Currency" />
+          <EntitySet Name="PoiTypes" EntityType="City.PoiType" />
+          <EntitySet Name="Transactions" EntityType="City.Transaction" />
+          <AssociationSet Name="CreditCardTransactions" Association="City.CreditCardTransactions">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="CreditCard" EntitySet="CreditCards" />
+          </AssociationSet>
+          <AssociationSet Name="PoiTransaction" Association="City.PoiTransaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Poi" EntitySet="Pois" />
+          </AssociationSet>
+          <AssociationSet Name="PoiPoiType" Association="City.PoiPoiType">
+            <End Role="Poi" EntitySet="Pois" />
+            <End Role="PoiType" EntitySet="PoiTypes" />
+          </AssociationSet>
+          <AssociationSet Name="CreditCardCurrency" Association="City.CreditCardCurrency">
+            <End Role="CreditCard" EntitySet="CreditCards" />
+            <End Role="Currency" EntitySet="Currencies" />
+          </AssociationSet>
+          <EntitySet Name="Demands" EntityType="City.Demand" />
+          <AssociationSet Name="PersonDemand" Association="City.PersonDemand">
+            <End Role="Demand" EntitySet="Demands" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="DemandPoiType" Association="City.DemandPoiType">
+            <End Role="Demand" EntitySet="Demands" />
+            <End Role="PoiType" EntitySet="PoiTypes" />
+          </AssociationSet>
+          <AssociationSet Name="CreditCardBank" Association="City.CreditCardBank">
+            <End Role="CreditCard" EntitySet="CreditCards" />
+            <End Role="Bank" EntitySet="Banks" />
+          </AssociationSet>
+          <AssociationSet Name="AddressPerson" Association="City.AddressPerson">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="DistrictAddress" Association="City.DistrictAddress">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="ConfigurationDistrict" Association="City.ConfigurationDistrict">
+            <End Role="Configuration" EntitySet="Configurations" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="TransactionDemand" Association="City.TransactionDemand">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Demand" EntitySet="Demands" />
+          </AssociationSet>
+          <EntitySet Name="Configurations" EntityType="City.Configuration" />
+          <AssociationSet Name="ConfigurationPoiType" Association="City.ConfigurationPoiType">
+            <End Role="Configuration" EntitySet="Configurations" />
+            <End Role="PoiType" EntitySet="PoiTypes" />
+          </AssociationSet>
+          <AssociationSet Name="DistrictMapPoint" Association="City.DistrictMapPoint">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="MapPoint" EntitySet="MapPoints" />
+          </AssociationSet>
+          <EntitySet Name="PersonTemplates" EntityType="City.PersonTemplate" />
+          <AssociationSet Name="PersonPersonTemplate" Association="City.PersonPersonTemplate">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PersonTemplate" EntitySet="PersonTemplates" />
+          </AssociationSet>
+          <EntitySet Name="Pois" EntityType="City.Poi" />
+          <EntitySet Name="Addresses" EntityType="City.Address" />
+          <AssociationSet Name="AddressMapPoint" Association="City.AddressMapPoint">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="MapPoint" EntitySet="MapPoints" />
+          </AssociationSet>
+          <AssociationSet Name="PoiMapPoint" Association="City.PoiMapPoint">
+            <End Role="Poi" EntitySet="Pois" />
+            <End Role="MapPoint" EntitySet="MapPoints" />
+          </AssociationSet>
+          <EntitySet Name="SelectionMethods" EntityType="City.SelectionMethod" />
+          <AssociationSet Name="ConfigurationPois" Association="City.ConfigurationPois">
+            <End Role="Configuration" EntitySet="Configurations" />
+            <End Role="Poi" EntitySet="Pois" />
+          </AssociationSet>
+          <AssociationSet Name="SelectionMethodConfiguration" Association="City.SelectionMethodConfiguration">
+            <End Role="SelectionMethod" EntitySet="SelectionMethods" />
+            <End Role="Configuration" EntitySet="Configurations" />
+          </AssociationSet>
+          <EntitySet Name="CircleAreas" EntityType="City.CircleArea" />
+          <AssociationSet Name="ConfigurationCircleArea" Association="City.ConfigurationCircleArea">
+            <End Role="Configuration" EntitySet="Configurations" />
+            <End Role="CircleArea" EntitySet="CircleAreas" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Population" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="Addresses" Relationship="City.DistrictAddress" FromRole="District" ToRole="Address" />
+          <NavigationProperty Name="Configuration" Relationship="City.ConfigurationDistrict" FromRole="District" ToRole="Configuration" />
+          <NavigationProperty Name="MapPoints" Relationship="City.DistrictMapPoint" FromRole="District" ToRole="MapPoint" />
+          <Property Type="String" Name="Name" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="CreditCard" Relationship="City.CreditCardPerson" FromRole="Person" ToRole="CreditCard" />
+          <NavigationProperty Name="Demands" Relationship="City.PersonDemand" FromRole="Person" ToRole="Demand" />
+          <NavigationProperty Name="Address" Relationship="City.AddressPerson" FromRole="Person" ToRole="Address" />
+          <NavigationProperty Name="Template" Relationship="City.PersonPersonTemplate" FromRole="Person" ToRole="PersonTemplate" />
+        </EntityType>
+        <EntityType Name="CreditCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="Balance" Nullable="false" />
+          <Property Type="Double" Name="Limit" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="City.CreditCardPerson" FromRole="CreditCard" ToRole="Person" />
+          <NavigationProperty Name="Transactions" Relationship="City.CreditCardTransactions" FromRole="CreditCard" ToRole="Transaction" />
+          <NavigationProperty Name="Currency" Relationship="City.CreditCardCurrency" FromRole="CreditCard" ToRole="Currency" />
+          <NavigationProperty Name="Bank" Relationship="City.CreditCardBank" FromRole="CreditCard" ToRole="Bank" />
+          <Property Type="String" Name="Number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MapPoint" Abstract="false">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="Lat" Nullable="false" />
+          <Property Type="Double" Name="Lng" Nullable="false" />
+        </EntityType>
+        <Association Name="CreditCardPerson">
+          <End Type="City.CreditCard" Role="CreditCard" Multiplicity="1" />
+          <End Type="City.Person" Role="Person" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+        </Association>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PoiType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" />
+          <Property Type="Double" Name="Frequency" Nullable="false" DefaultValue="1" />
+        </EntityType>
+        <EntityType Name="Poi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="Transactions" Relationship="City.PoiTransaction" FromRole="Poi" ToRole="Transaction" />
+          <NavigationProperty Name="Type" Relationship="City.PoiPoiType" FromRole="Poi" ToRole="PoiType" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Vicinity" Nullable="false" />
+          <NavigationProperty Name="MapPoint" Relationship="City.PoiMapPoint" FromRole="Poi" ToRole="MapPoint" />
+          <NavigationProperty Name="Configuration" Relationship="City.ConfigurationPois" FromRole="Poi" ToRole="Configuration" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="CreditCard" Relationship="City.CreditCardTransactions" FromRole="Transaction" ToRole="CreditCard" />
+          <NavigationProperty Name="Poi" Relationship="City.PoiTransaction" FromRole="Transaction" ToRole="Poi" />
+          <Property Type="DateTime" Name="DateTime" Nullable="false" />
+          <Property Type="Double" Name="Value" Nullable="false" />
+          <NavigationProperty Name="Demand" Relationship="City.TransactionDemand" FromRole="Transaction" ToRole="Demand" />
+        </EntityType>
+        <Association Name="CreditCardTransactions">
+          <End Type="City.Transaction" Role="Transaction" Multiplicity="*" />
+          <End Type="City.CreditCard" Role="CreditCard" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+        </Association>
+        <Association Name="PoiTransaction">
+          <End Type="City.Transaction" Role="Transaction" Multiplicity="*" />
+          <End Type="City.Poi" Role="Poi" Multiplicity="1" >
+          </End>
+        </Association>
+        <Association Name="PoiPoiType">
+          <End Type="City.Poi" Role="Poi" Multiplicity="*" />
+          <End Type="City.PoiType" Role="PoiType" Multiplicity="*" />
+        </Association>
+        <Association Name="CreditCardCurrency">
+          <End Type="City.CreditCard" Role="CreditCard" Multiplicity="*" />
+          <End Type="City.Currency" Role="Currency" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Demand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Person" Relationship="City.PersonDemand" FromRole="Demand" ToRole="Person" />
+          <NavigationProperty Name="PoiType" Relationship="City.DemandPoiType" FromRole="Demand" ToRole="PoiType" />
+          <NavigationProperty Name="Transaction" Relationship="City.TransactionDemand" FromRole="Demand" ToRole="Transaction" />
+          <Property Type="Boolean" Name="Fulfilled" Nullable="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="PersonDemand">
+          <End Type="City.Demand" Role="Demand" Multiplicity="*" />
+          <End Type="City.Person" Role="Person" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+        </Association>
+        <Association Name="DemandPoiType">
+          <End Type="City.Demand" Role="Demand" Multiplicity="*" >
+          </End>
+          <End Type="City.PoiType" Role="PoiType" Multiplicity="1" >
+          </End>
+        </Association>
+        <Association Name="CreditCardBank">
+          <End Type="City.CreditCard" Role="CreditCard" Multiplicity="*" />
+          <End Type="City.Bank" Role="Bank" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="Residents" Relationship="City.AddressPerson" FromRole="Address" ToRole="Person" />
+          <NavigationProperty Name="District" Relationship="City.DistrictAddress" FromRole="Address" ToRole="District" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AddressLine" Nullable="true" />
+          <NavigationProperty Name="MapPoint" Relationship="City.AddressMapPoint" FromRole="Address" ToRole="MapPoint" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Districts" Relationship="City.ConfigurationDistrict" FromRole="Configuration" ToRole="District" />
+          <NavigationProperty Name="PoiTypes" Relationship="City.ConfigurationPoiType" FromRole="Configuration" ToRole="PoiType" />
+          <Property Type="DateTime" Name="SimulationStartDate" Nullable="false" />
+          <Property Type="DateTime" Name="SimulationEndDate" Nullable="false" />
+          <Property Type="Double" Name="PersonDemandsPerDay" Nullable="false" />
+          <NavigationProperty Name="Pois" Relationship="City.ConfigurationPois" FromRole="Configuration" ToRole="Poi" />
+          <Property Type="Int32" Name="CreditCardBalanceMin" Nullable="false" />
+          <Property Type="Int32" Name="CreditCardBalanceMax" Nullable="false" />
+          <Property Type="Int32" Name="CreditCardLimitMin" Nullable="false" />
+          <Property Type="Int32" Name="CreditCardLimitMax" Nullable="false" />
+          <Property Type="Int32" Name="TransactionValueMin" Nullable="false" />
+          <Property Type="Int32" Name="TransactionValueMax" Nullable="false" />
+          <NavigationProperty Name="SelectionMethod" Relationship="City.SelectionMethodConfiguration" FromRole="Configuration" ToRole="SelectionMethod" />
+          <NavigationProperty Name="CircleAreas" Relationship="City.ConfigurationCircleArea" FromRole="Configuration" ToRole="CircleArea" />
+        </EntityType>
+        <Association Name="AddressPerson">
+          <End Type="City.Address" Role="Address" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="City.Person" Role="Person" Multiplicity="*" />
+        </Association>
+        <Association Name="DistrictAddress">
+          <End Type="City.District" Role="District" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="City.Address" Role="Address" Multiplicity="*" />
+        </Association>
+        <Association Name="ConfigurationDistrict">
+          <End Type="City.Configuration" Role="Configuration" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="City.District" Role="District" Multiplicity="*" />
+        </Association>
+        <Association Name="TransactionDemand">
+          <End Type="City.Transaction" Role="Transaction" Multiplicity="0..1" >
+          </End>
+          <End Type="City.Demand" Role="Demand" Multiplicity="1" >
+          </End>
+        </Association>
+        <Association Name="ConfigurationPoiType">
+          <End Type="City.Configuration" Role="Configuration" Multiplicity="*" />
+          <End Type="City.PoiType" Role="PoiType" Multiplicity="*" />
+        </Association>
+        <Association Name="DistrictMapPoint">
+          <End Type="City.District" Role="District" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="City.MapPoint" Role="MapPoint" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PersonTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="Boolean" Name="IsMale" Nullable="false" />
+        </EntityType>
+        <Association Name="PersonPersonTemplate">
+          <End Type="City.Person" Role="Person" Multiplicity="*" />
+          <End Type="City.PersonTemplate" Role="PersonTemplate" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+        </Association>
+        <Association Name="AddressMapPoint">
+          <End Type="City.Address" Role="Address" Multiplicity="0..1" >
+          </End>
+          <End Type="City.MapPoint" Role="MapPoint" Multiplicity="1" >
+          </End>
+        </Association>
+        <Association Name="PoiMapPoint">
+          <End Type="City.Poi" Role="Poi" Multiplicity="0..1" >
+          </End>
+          <End Type="City.MapPoint" Role="MapPoint" Multiplicity="1" >
+          </End>
+        </Association>
+        <EntityType Name="SelectionMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <Association Name="ConfigurationPois">
+          <End Type="City.Configuration" Role="Configuration" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="City.Poi" Role="Poi" Multiplicity="*" />
+        </Association>
+        <Association Name="SelectionMethodConfiguration">
+          <End Type="City.SelectionMethod" Role="SelectionMethod" Multiplicity="1" />
+          <End Type="City.Configuration" Role="Configuration" Multiplicity="*" />
+        </Association>
+        <EntityType Name="CircleArea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="Lat" Nullable="false" />
+          <Property Type="Double" Name="Lng" Nullable="false" />
+          <Property Type="Double" Name="Range" Nullable="false" />
+          <NavigationProperty Name="Configuration" Relationship="City.ConfigurationCircleArea" FromRole="CircleArea" ToRole="Configuration" />
+        </EntityType>
+        <Association Name="ConfigurationCircleArea">
+          <End Type="City.Configuration" Role="Configuration" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="City.CircleArea" Role="CircleArea" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CityStoreContainer" CdmEntityContainer="CityContainer">
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="IsTypeOf(City.District)">
+        <MappingFragment StoreEntitySet="Districts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Population" ColumnName="Population" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="IsTypeOf(City.Person)">
+        <MappingFragment StoreEntitySet="People">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreditCards">
+      <EntityTypeMapping TypeName="IsTypeOf(City.CreditCard)">
+        <MappingFragment StoreEntitySet="CreditCards">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Limit" ColumnName="Limit" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MapPoints">
+      <EntityTypeMapping TypeName="IsTypeOf(City.MapPoint)">
+        <MappingFragment StoreEntitySet="MapPoints">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="IsTypeOf(City.Bank)">
+        <MappingFragment StoreEntitySet="Banks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currencies">
+      <EntityTypeMapping TypeName="IsTypeOf(City.Currency)">
+        <MappingFragment StoreEntitySet="Currencies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoiTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(City.PoiType)">
+        <MappingFragment StoreEntitySet="PoiTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="IsTypeOf(City.Transaction)">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Demands">
+      <EntityTypeMapping TypeName="IsTypeOf(City.Demand)">
+        <MappingFragment StoreEntitySet="Demands">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fulfilled" ColumnName="Fulfilled" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configurations">
+      <EntityTypeMapping TypeName="IsTypeOf(City.Configuration)">
+        <MappingFragment StoreEntitySet="Configurations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SimulationStartDate" ColumnName="SimulationStartDate" />
+          <ScalarProperty Name="SimulationEndDate" ColumnName="SimulationEndDate" />
+          <ScalarProperty Name="PersonDemandsPerDay" ColumnName="PersonDemandsPerDay" />
+          <ScalarProperty Name="CreditCardBalanceMin" ColumnName="CreditCardBalanceMin" />
+          <ScalarProperty Name="CreditCardBalanceMax" ColumnName="CreditCardBalanceMax" />
+          <ScalarProperty Name="CreditCardLimitMin" ColumnName="CreditCardLimitMin" />
+          <ScalarProperty Name="CreditCardLimitMax" ColumnName="CreditCardLimitMax" />
+          <ScalarProperty Name="TransactionValueMin" ColumnName="TransactionValueMin" />
+          <ScalarProperty Name="TransactionValueMax" ColumnName="TransactionValueMax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonTemplates">
+      <EntityTypeMapping TypeName="IsTypeOf(City.PersonTemplate)">
+        <MappingFragment StoreEntitySet="PersonTemplates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="IsMale" ColumnName="IsMale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pois">
+      <EntityTypeMapping TypeName="IsTypeOf(City.Poi)">
+        <MappingFragment StoreEntitySet="Pois">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Vicinity" ColumnName="Vicinity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="IsTypeOf(City.Address)">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SelectionMethods">
+      <EntityTypeMapping TypeName="IsTypeOf(City.SelectionMethod)">
+        <MappingFragment StoreEntitySet="SelectionMethods">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CircleAreas">
+      <EntityTypeMapping TypeName="IsTypeOf(City.CircleArea)">
+        <MappingFragment StoreEntitySet="CircleAreas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Range" ColumnName="Range" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CreditCardPerson" TypeName="City.CreditCardPerson" StoreEntitySet="CreditCards">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Owner_Id" />
+      </EndProperty>
+      <EndProperty Name="CreditCard">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CreditCardTransactions" TypeName="City.CreditCardTransactions" StoreEntitySet="Transactions">
+      <EndProperty Name="CreditCard">
+        <ScalarProperty Name="Id" ColumnName="CreditCard_Id" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PoiTransaction" TypeName="City.PoiTransaction" StoreEntitySet="Transactions">
+      <EndProperty Name="Poi">
+        <ScalarProperty Name="Id" ColumnName="Poi_Id" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PoiPoiType" TypeName="City.PoiPoiType" StoreEntitySet="PoiPoiType">
+      <EndProperty Name="Poi">
+        <ScalarProperty Name="Id" ColumnName="PoiPoiType_PoiType_Id" />
+      </EndProperty>
+      <EndProperty Name="PoiType">
+        <ScalarProperty Name="Id" ColumnName="Type_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CreditCardCurrency" TypeName="City.CreditCardCurrency" StoreEntitySet="CreditCards">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="Id" ColumnName="Currency_Id" />
+      </EndProperty>
+      <EndProperty Name="CreditCard">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonDemand" TypeName="City.PersonDemand" StoreEntitySet="Demands">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+      <EndProperty Name="Demand">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DemandPoiType" TypeName="City.DemandPoiType" StoreEntitySet="Demands">
+      <EndProperty Name="PoiType">
+        <ScalarProperty Name="Id" ColumnName="PoiType_Id" />
+      </EndProperty>
+      <EndProperty Name="Demand">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CreditCardBank" TypeName="City.CreditCardBank" StoreEntitySet="CreditCards">
+      <EndProperty Name="Bank">
+        <ScalarProperty Name="Id" ColumnName="Bank_Id" />
+      </EndProperty>
+      <EndProperty Name="CreditCard">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AddressPerson" TypeName="City.AddressPerson" StoreEntitySet="People">
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Address_Id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Address_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DistrictAddress" TypeName="City.DistrictAddress" StoreEntitySet="Addresses">
+      <EndProperty Name="District">
+        <ScalarProperty Name="Id" ColumnName="District_Id" />
+      </EndProperty>
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ConfigurationDistrict" TypeName="City.ConfigurationDistrict" StoreEntitySet="Districts">
+      <EndProperty Name="Configuration">
+        <ScalarProperty Name="Id" ColumnName="Configuration_Id" />
+      </EndProperty>
+      <EndProperty Name="District">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TransactionDemand" TypeName="City.TransactionDemand" StoreEntitySet="Transactions">
+      <EndProperty Name="Demand">
+        <ScalarProperty Name="Id" ColumnName="Demand_Id" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ConfigurationPoiType" TypeName="City.ConfigurationPoiType" StoreEntitySet="ConfigurationPoiType">
+      <EndProperty Name="Configuration">
+        <ScalarProperty Name="Id" ColumnName="ConfigurationPoiType_PoiType_Id" />
+      </EndProperty>
+      <EndProperty Name="PoiType">
+        <ScalarProperty Name="Id" ColumnName="PoiTypes_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DistrictMapPoint" TypeName="City.DistrictMapPoint" StoreEntitySet="MapPoints">
+      <EndProperty Name="District">
+        <ScalarProperty Name="Id" ColumnName="DistrictMapPoint_MapPoint_Id" />
+      </EndProperty>
+      <EndProperty Name="MapPoint">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="DistrictMapPoint_MapPoint_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonPersonTemplate" TypeName="City.PersonPersonTemplate" StoreEntitySet="People">
+      <EndProperty Name="PersonTemplate">
+        <ScalarProperty Name="Id" ColumnName="Template_Id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AddressMapPoint" TypeName="City.AddressMapPoint" StoreEntitySet="Addresses">
+      <EndProperty Name="MapPoint">
+        <ScalarProperty Name="Id" ColumnName="MapPoint_Id" />
+      </EndProperty>
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PoiMapPoint" TypeName="City.PoiMapPoint" StoreEntitySet="Pois">
+      <EndProperty Name="MapPoint">
+        <ScalarProperty Name="Id" ColumnName="MapPoint_Id" />
+      </EndProperty>
+      <EndProperty Name="Poi">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ConfigurationPois" TypeName="City.ConfigurationPois" StoreEntitySet="Pois">
+      <EndProperty Name="Configuration">
+        <ScalarProperty Name="Id" ColumnName="Configuration_Id" />
+      </EndProperty>
+      <EndProperty Name="Poi">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SelectionMethodConfiguration" TypeName="City.SelectionMethodConfiguration" StoreEntitySet="Configurations">
+      <EndProperty Name="SelectionMethod">
+        <ScalarProperty Name="Id" ColumnName="SelectionMethod_Id" />
+      </EndProperty>
+      <EndProperty Name="Configuration">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ConfigurationCircleArea" TypeName="City.ConfigurationCircleArea" StoreEntitySet="CircleAreas">
+      <EndProperty Name="Configuration">
+        <ScalarProperty Name="Id" ColumnName="Configuration_Id" />
+      </EndProperty>
+      <EndProperty Name="CircleArea">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="City" DisplayType="false" ShowGrid="false" ZoomLevel="81" >
+        <EntityTypeShape EntityType="City.District" Width="1.5" PointX="13.75" PointY="5.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="City.Person" Width="1.5" PointX="8.375" PointY="7.5" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="City.CreditCard" Width="1.5" PointX="5.875" PointY="8.5" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="City.MapPoint" Width="1.5" PointX="13.25" PointY="3.625" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="City.CreditCardPerson">
+          <ConnectorPoint PointX="7.375" PointY="8.9901432291666659" />
+          <ConnectorPoint PointX="8.375" PointY="8.9901432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="City.Bank" Width="1.5" PointX="7.75" PointY="10.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="City.Currency" Width="1.5" PointX="7.75" PointY="9.75" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="City.PoiType" Width="1.75" PointX="8.375" PointY="6.25" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="City.Poi" Width="1.5" PointX="8.375" PointY="3.5" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="City.Transaction" Width="1.5" PointX="6.375" PointY="3.5" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="City.CreditCardTransactions">
+          <ConnectorPoint PointX="6.375" PointY="4.5862939453125" />
+          <ConnectorPoint PointX="6.1249994999999995" PointY="4.5862939453125" />
+          <ConnectorPoint PointX="6.1249994999999995" PointY="8.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.PoiTransaction">
+          <ConnectorPoint PointX="7.875" PointY="4.5862939453125" />
+          <ConnectorPoint PointX="8.375" PointY="4.5862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.PoiPoiType">
+          <ConnectorPoint PointX="9.125" PointY="5.8648893229166665" />
+          <ConnectorPoint PointX="9.125" PointY="6.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.CreditCardCurrency">
+          <ConnectorPoint PointX="7.375" PointY="9.95" />
+          <ConnectorPoint PointX="7.75" PointY="9.95" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="City.Demand" Width="1.5" PointX="6.375" PointY="6.125" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="City.PersonDemand">
+          <ConnectorPoint PointX="7.875" PointY="7.8987939453125" />
+          <ConnectorPoint PointX="8.375" PointY="7.8987939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.DemandPoiType">
+          <ConnectorPoint PointX="7.875" PointY="6.45" />
+          <ConnectorPoint PointX="8.375" PointY="6.45" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.CreditCardBank">
+          <ConnectorPoint PointX="7.375" PointY="10.7" />
+          <ConnectorPoint PointX="7.75" PointY="10.7" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="City.Address" Width="1.625" PointX="13.375" PointY="9.125" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="City.Configuration" Width="2.5" PointX="10.5" PointY="4.75" Height="4.0956022135416656" IsExpanded="true" />
+        <AssociationConnector Association="City.AddressPerson">
+          <ConnectorPoint PointX="13.375" PointY="9.3026432291666659" />
+          <ConnectorPoint PointX="12.395833333333334" PointY="9.3026432291666659" />
+          <ConnectorPoint PointX="12.229166666666666" PointY="9.3026432291666659" />
+          <ConnectorPoint PointX="9.875" PointY="9.3026432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.DistrictAddress">
+          <ConnectorPoint PointX="14.375" PointY="7.922587890625" />
+          <ConnectorPoint PointX="14.375" PointY="9.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.ConfigurationDistrict">
+          <ConnectorPoint PointX="13" PointY="6.8362939453125" />
+          <ConnectorPoint PointX="13.447916666666666" PointY="6.8362939453124989" />
+          <ConnectorPoint PointX="13.614583333333334" PointY="6.8362939453125" />
+          <ConnectorPoint PointX="13.75" PointY="6.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.TransactionDemand">
+          <ConnectorPoint PointX="7.125" PointY="5.672587890625" />
+          <ConnectorPoint PointX="7.125" PointY="6.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.ConfigurationPoiType">
+          <ConnectorPoint PointX="10.5" PointY="6.45" />
+          <ConnectorPoint PointX="10.125" PointY="6.45" />
+        </AssociationConnector>
+        <InheritanceConnector EntityType="City.Address">
+          <ConnectorPoint PointX="11.375" PointY="6.59568359375" />
+          <ConnectorPoint PointX="11.375" PointY="7.125" />
+        </InheritanceConnector>
+        <AssociationConnector Association="City.DistrictMapPoint">
+          <ConnectorPoint PointX="14.25" PointY="5.75" />
+          <ConnectorPoint PointX="14.25" PointY="5.22068359375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="City.PersonTemplate" Width="1.5" PointX="9.875" PointY="9.625" Height="1.7879850260416657" />
+        <AssociationConnector Association="City.PersonPersonTemplate">
+          <ConnectorPoint PointX="9.1249995000000013" PointY="9.4802864583333317" />
+          <ConnectorPoint PointX="9.1249995000000013" PointY="9.6338864583333326" />
+          <ConnectorPoint PointX="9.7214" PointY="9.6338864583333326" />
+          <ConnectorPoint PointX="9.7214" PointY="10.518992513020834" />
+          <ConnectorPoint PointX="9.875" PointY="10.518992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.AddressMapPoint">
+          <ConnectorPoint PointX="13.53125" PointY="9.125" />
+          <ConnectorPoint PointX="13.53125" PointY="5.22068359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.PoiMapPoint">
+          <ConnectorPoint PointX="9.875" PointY="4.15625" />
+          <ConnectorPoint PointX="13.25" PointY="4.15625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="City.SelectionMethod" Width="1.75" PointX="8.375" PointY="6.875" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="City.ConfigurationPois">
+          <ConnectorPoint PointX="10.5" PointY="5.3074446614583337" />
+          <ConnectorPoint PointX="9.875" PointY="5.3074446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="City.SelectionMethodConfiguration">
+          <ConnectorPoint PointX="10.125" PointY="7.0749999999999993" />
+          <ConnectorPoint PointX="10.5" PointY="7.0749999999999993" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="City.CircleArea" Width="1.5" PointX="11.625" PointY="9.5" Height="1.9802864583333317" />
+        <AssociationConnector Association="City.ConfigurationCircleArea">
+          <ConnectorPoint PointX="12.3125" PointY="8.8456022135416656" />
+          <ConnectorPoint PointX="12.3125" PointY="9.5" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

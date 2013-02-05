@@ -1,0 +1,667 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 09/23/2011 17:05:19
+-- Generated from EDMX file: D:\programming\visual studio 10\projects\CitySilverlight\CityModel\City.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    ALTER TABLE [CreditCards] DROP CONSTRAINT [FK_CreditCardPerson];
+GO
+    ALTER TABLE [Transactions] DROP CONSTRAINT [FK_CreditCardTransactions];
+GO
+    ALTER TABLE [Transactions] DROP CONSTRAINT [FK_PoiTransaction];
+GO
+    ALTER TABLE [PoiPoiType] DROP CONSTRAINT [FK_PoiPoiType_Poi];
+GO
+    ALTER TABLE [PoiPoiType] DROP CONSTRAINT [FK_PoiPoiType_PoiType];
+GO
+    ALTER TABLE [CreditCards] DROP CONSTRAINT [FK_CreditCardCurrency];
+GO
+    ALTER TABLE [Demands] DROP CONSTRAINT [FK_PersonDemand];
+GO
+    ALTER TABLE [Demands] DROP CONSTRAINT [FK_DemandPoiType];
+GO
+    ALTER TABLE [CreditCards] DROP CONSTRAINT [FK_CreditCardBank];
+GO
+    ALTER TABLE [People] DROP CONSTRAINT [FK_AddressPerson];
+GO
+    ALTER TABLE [Addresses] DROP CONSTRAINT [FK_DistrictAddress];
+GO
+    ALTER TABLE [Districts] DROP CONSTRAINT [FK_ConfigurationDistrict];
+GO
+    ALTER TABLE [Transactions] DROP CONSTRAINT [FK_TransactionDemand];
+GO
+    ALTER TABLE [ConfigurationPoiType] DROP CONSTRAINT [FK_ConfigurationPoiType_Configuration];
+GO
+    ALTER TABLE [ConfigurationPoiType] DROP CONSTRAINT [FK_ConfigurationPoiType_PoiType];
+GO
+    ALTER TABLE [MapPoints] DROP CONSTRAINT [FK_DistrictMapPoint];
+GO
+    ALTER TABLE [People] DROP CONSTRAINT [FK_PersonPersonTemplate];
+GO
+    ALTER TABLE [Addresses] DROP CONSTRAINT [FK_AddressMapPoint];
+GO
+    ALTER TABLE [Pois] DROP CONSTRAINT [FK_PoiMapPoint];
+GO
+    ALTER TABLE [Pois] DROP CONSTRAINT [FK_ConfigurationPois];
+GO
+    ALTER TABLE [Configurations] DROP CONSTRAINT [FK_SelectionMethodConfiguration];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    DROP TABLE [Districts];
+GO
+    DROP TABLE [People];
+GO
+    DROP TABLE [CreditCards];
+GO
+    DROP TABLE [MapPoints];
+GO
+    DROP TABLE [Banks];
+GO
+    DROP TABLE [Currencies];
+GO
+    DROP TABLE [PoiTypes];
+GO
+    DROP TABLE [Transactions];
+GO
+    DROP TABLE [Demands];
+GO
+    DROP TABLE [Configurations];
+GO
+    DROP TABLE [PersonTemplates];
+GO
+    DROP TABLE [Pois];
+GO
+    DROP TABLE [Addresses];
+GO
+    DROP TABLE [SelectionMethods];
+GO
+    DROP TABLE [PoiPoiType];
+GO
+    DROP TABLE [ConfigurationPoiType];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Districts'
+CREATE TABLE [Districts] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Population] int  NOT NULL,
+    [Name] nvarchar(4000)  NULL,
+    [Configuration_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'People'
+CREATE TABLE [People] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Address_Id] int  NULL,
+    [Template_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'CreditCards'
+CREATE TABLE [CreditCards] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Balance] float  NOT NULL,
+    [Limit] float  NOT NULL,
+    [Number] nvarchar(4000)  NOT NULL,
+    [Owner_Id] int  NOT NULL,
+    [Currency_Id] int  NOT NULL,
+    [Bank_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'MapPoints'
+CREATE TABLE [MapPoints] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Lat] float  NOT NULL,
+    [Lng] float  NOT NULL,
+    [DistrictMapPoint_MapPoint_Id] int  NULL
+);
+GO
+
+-- Creating table 'Banks'
+CREATE TABLE [Banks] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'Currencies'
+CREATE TABLE [Currencies] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Code] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'PoiTypes'
+CREATE TABLE [PoiTypes] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Code] nvarchar(4000)  NOT NULL,
+    [Frequency] float  NOT NULL
+);
+GO
+
+-- Creating table 'Transactions'
+CREATE TABLE [Transactions] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [DateTime] datetime  NOT NULL,
+    [Value] float  NOT NULL,
+    [CreditCard_Id] int  NOT NULL,
+    [Poi_Id] int  NOT NULL,
+    [Demand_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Demands'
+CREATE TABLE [Demands] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Fulfilled] bit  NOT NULL,
+    [DateTime] datetime  NOT NULL,
+    [Person_Id] int  NOT NULL,
+    [PoiType_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Configurations'
+CREATE TABLE [Configurations] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL,
+    [SimulationStartDate] datetime  NOT NULL,
+    [SimulationEndDate] datetime  NOT NULL,
+    [PersonDemandsPerDay] float  NOT NULL,
+    [CreditCardBalanceMin] int  NOT NULL,
+    [CreditCardBalanceMax] int  NOT NULL,
+    [CreditCardLimitMin] int  NOT NULL,
+    [CreditCardLimitMax] int  NOT NULL,
+    [TransactionValueMin] int  NOT NULL,
+    [TransactionValueMax] int  NOT NULL,
+    [SelectionMethod_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'PersonTemplates'
+CREATE TABLE [PersonTemplates] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [FirstName] nvarchar(4000)  NOT NULL,
+    [LastName] nvarchar(4000)  NOT NULL,
+    [IsMale] bit  NOT NULL
+);
+GO
+
+-- Creating table 'Pois'
+CREATE TABLE [Pois] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL,
+    [Vicinity] nvarchar(4000)  NOT NULL,
+    [MapPoint_Id] int  NOT NULL,
+    [Configuration_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Addresses'
+CREATE TABLE [Addresses] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [AddressLine] nvarchar(4000)  NULL,
+    [District_Id] int  NOT NULL,
+    [MapPoint_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'SelectionMethods'
+CREATE TABLE [SelectionMethods] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'CircleAreas'
+CREATE TABLE [CircleAreas] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Lat] float  NOT NULL,
+    [Lng] float  NOT NULL,
+    [Range] float  NOT NULL,
+    [Configuration_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'PoiPoiType'
+CREATE TABLE [PoiPoiType] (
+    [PoiPoiType_PoiType_Id] int  NOT NULL,
+    [Type_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'ConfigurationPoiType'
+CREATE TABLE [ConfigurationPoiType] (
+    [ConfigurationPoiType_PoiType_Id] int  NOT NULL,
+    [PoiTypes_Id] int  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'Districts'
+ALTER TABLE [Districts]
+ADD CONSTRAINT [PK_Districts]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'People'
+ALTER TABLE [People]
+ADD CONSTRAINT [PK_People]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'CreditCards'
+ALTER TABLE [CreditCards]
+ADD CONSTRAINT [PK_CreditCards]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'MapPoints'
+ALTER TABLE [MapPoints]
+ADD CONSTRAINT [PK_MapPoints]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Banks'
+ALTER TABLE [Banks]
+ADD CONSTRAINT [PK_Banks]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Currencies'
+ALTER TABLE [Currencies]
+ADD CONSTRAINT [PK_Currencies]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'PoiTypes'
+ALTER TABLE [PoiTypes]
+ADD CONSTRAINT [PK_PoiTypes]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Transactions'
+ALTER TABLE [Transactions]
+ADD CONSTRAINT [PK_Transactions]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Demands'
+ALTER TABLE [Demands]
+ADD CONSTRAINT [PK_Demands]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Configurations'
+ALTER TABLE [Configurations]
+ADD CONSTRAINT [PK_Configurations]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'PersonTemplates'
+ALTER TABLE [PersonTemplates]
+ADD CONSTRAINT [PK_PersonTemplates]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Pois'
+ALTER TABLE [Pois]
+ADD CONSTRAINT [PK_Pois]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Addresses'
+ALTER TABLE [Addresses]
+ADD CONSTRAINT [PK_Addresses]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'SelectionMethods'
+ALTER TABLE [SelectionMethods]
+ADD CONSTRAINT [PK_SelectionMethods]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'CircleAreas'
+ALTER TABLE [CircleAreas]
+ADD CONSTRAINT [PK_CircleAreas]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [PoiPoiType_PoiType_Id], [Type_Id] in table 'PoiPoiType'
+ALTER TABLE [PoiPoiType]
+ADD CONSTRAINT [PK_PoiPoiType]
+    PRIMARY KEY ([PoiPoiType_PoiType_Id], [Type_Id] );
+GO
+
+-- Creating primary key on [ConfigurationPoiType_PoiType_Id], [PoiTypes_Id] in table 'ConfigurationPoiType'
+ALTER TABLE [ConfigurationPoiType]
+ADD CONSTRAINT [PK_ConfigurationPoiType]
+    PRIMARY KEY ([ConfigurationPoiType_PoiType_Id], [PoiTypes_Id] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [Owner_Id] in table 'CreditCards'
+ALTER TABLE [CreditCards]
+ADD CONSTRAINT [FK_CreditCardPerson]
+    FOREIGN KEY ([Owner_Id])
+    REFERENCES [People]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreditCardPerson'
+CREATE INDEX [IX_FK_CreditCardPerson]
+ON [CreditCards]
+    ([Owner_Id]);
+GO
+
+-- Creating foreign key on [CreditCard_Id] in table 'Transactions'
+ALTER TABLE [Transactions]
+ADD CONSTRAINT [FK_CreditCardTransactions]
+    FOREIGN KEY ([CreditCard_Id])
+    REFERENCES [CreditCards]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreditCardTransactions'
+CREATE INDEX [IX_FK_CreditCardTransactions]
+ON [Transactions]
+    ([CreditCard_Id]);
+GO
+
+-- Creating foreign key on [Poi_Id] in table 'Transactions'
+ALTER TABLE [Transactions]
+ADD CONSTRAINT [FK_PoiTransaction]
+    FOREIGN KEY ([Poi_Id])
+    REFERENCES [Pois]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PoiTransaction'
+CREATE INDEX [IX_FK_PoiTransaction]
+ON [Transactions]
+    ([Poi_Id]);
+GO
+
+-- Creating foreign key on [PoiPoiType_PoiType_Id] in table 'PoiPoiType'
+ALTER TABLE [PoiPoiType]
+ADD CONSTRAINT [FK_PoiPoiType_Poi]
+    FOREIGN KEY ([PoiPoiType_PoiType_Id])
+    REFERENCES [Pois]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Type_Id] in table 'PoiPoiType'
+ALTER TABLE [PoiPoiType]
+ADD CONSTRAINT [FK_PoiPoiType_PoiType]
+    FOREIGN KEY ([Type_Id])
+    REFERENCES [PoiTypes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PoiPoiType_PoiType'
+CREATE INDEX [IX_FK_PoiPoiType_PoiType]
+ON [PoiPoiType]
+    ([Type_Id]);
+GO
+
+-- Creating foreign key on [Currency_Id] in table 'CreditCards'
+ALTER TABLE [CreditCards]
+ADD CONSTRAINT [FK_CreditCardCurrency]
+    FOREIGN KEY ([Currency_Id])
+    REFERENCES [Currencies]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreditCardCurrency'
+CREATE INDEX [IX_FK_CreditCardCurrency]
+ON [CreditCards]
+    ([Currency_Id]);
+GO
+
+-- Creating foreign key on [Person_Id] in table 'Demands'
+ALTER TABLE [Demands]
+ADD CONSTRAINT [FK_PersonDemand]
+    FOREIGN KEY ([Person_Id])
+    REFERENCES [People]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PersonDemand'
+CREATE INDEX [IX_FK_PersonDemand]
+ON [Demands]
+    ([Person_Id]);
+GO
+
+-- Creating foreign key on [PoiType_Id] in table 'Demands'
+ALTER TABLE [Demands]
+ADD CONSTRAINT [FK_DemandPoiType]
+    FOREIGN KEY ([PoiType_Id])
+    REFERENCES [PoiTypes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DemandPoiType'
+CREATE INDEX [IX_FK_DemandPoiType]
+ON [Demands]
+    ([PoiType_Id]);
+GO
+
+-- Creating foreign key on [Bank_Id] in table 'CreditCards'
+ALTER TABLE [CreditCards]
+ADD CONSTRAINT [FK_CreditCardBank]
+    FOREIGN KEY ([Bank_Id])
+    REFERENCES [Banks]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreditCardBank'
+CREATE INDEX [IX_FK_CreditCardBank]
+ON [CreditCards]
+    ([Bank_Id]);
+GO
+
+-- Creating foreign key on [Address_Id] in table 'People'
+ALTER TABLE [People]
+ADD CONSTRAINT [FK_AddressPerson]
+    FOREIGN KEY ([Address_Id])
+    REFERENCES [Addresses]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AddressPerson'
+CREATE INDEX [IX_FK_AddressPerson]
+ON [People]
+    ([Address_Id]);
+GO
+
+-- Creating foreign key on [District_Id] in table 'Addresses'
+ALTER TABLE [Addresses]
+ADD CONSTRAINT [FK_DistrictAddress]
+    FOREIGN KEY ([District_Id])
+    REFERENCES [Districts]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DistrictAddress'
+CREATE INDEX [IX_FK_DistrictAddress]
+ON [Addresses]
+    ([District_Id]);
+GO
+
+-- Creating foreign key on [Configuration_Id] in table 'Districts'
+ALTER TABLE [Districts]
+ADD CONSTRAINT [FK_ConfigurationDistrict]
+    FOREIGN KEY ([Configuration_Id])
+    REFERENCES [Configurations]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ConfigurationDistrict'
+CREATE INDEX [IX_FK_ConfigurationDistrict]
+ON [Districts]
+    ([Configuration_Id]);
+GO
+
+-- Creating foreign key on [Demand_Id] in table 'Transactions'
+ALTER TABLE [Transactions]
+ADD CONSTRAINT [FK_TransactionDemand]
+    FOREIGN KEY ([Demand_Id])
+    REFERENCES [Demands]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TransactionDemand'
+CREATE INDEX [IX_FK_TransactionDemand]
+ON [Transactions]
+    ([Demand_Id]);
+GO
+
+-- Creating foreign key on [ConfigurationPoiType_PoiType_Id] in table 'ConfigurationPoiType'
+ALTER TABLE [ConfigurationPoiType]
+ADD CONSTRAINT [FK_ConfigurationPoiType_Configuration]
+    FOREIGN KEY ([ConfigurationPoiType_PoiType_Id])
+    REFERENCES [Configurations]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [PoiTypes_Id] in table 'ConfigurationPoiType'
+ALTER TABLE [ConfigurationPoiType]
+ADD CONSTRAINT [FK_ConfigurationPoiType_PoiType]
+    FOREIGN KEY ([PoiTypes_Id])
+    REFERENCES [PoiTypes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ConfigurationPoiType_PoiType'
+CREATE INDEX [IX_FK_ConfigurationPoiType_PoiType]
+ON [ConfigurationPoiType]
+    ([PoiTypes_Id]);
+GO
+
+-- Creating foreign key on [DistrictMapPoint_MapPoint_Id] in table 'MapPoints'
+ALTER TABLE [MapPoints]
+ADD CONSTRAINT [FK_DistrictMapPoint]
+    FOREIGN KEY ([DistrictMapPoint_MapPoint_Id])
+    REFERENCES [Districts]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DistrictMapPoint'
+CREATE INDEX [IX_FK_DistrictMapPoint]
+ON [MapPoints]
+    ([DistrictMapPoint_MapPoint_Id]);
+GO
+
+-- Creating foreign key on [Template_Id] in table 'People'
+ALTER TABLE [People]
+ADD CONSTRAINT [FK_PersonPersonTemplate]
+    FOREIGN KEY ([Template_Id])
+    REFERENCES [PersonTemplates]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PersonPersonTemplate'
+CREATE INDEX [IX_FK_PersonPersonTemplate]
+ON [People]
+    ([Template_Id]);
+GO
+
+-- Creating foreign key on [MapPoint_Id] in table 'Addresses'
+ALTER TABLE [Addresses]
+ADD CONSTRAINT [FK_AddressMapPoint]
+    FOREIGN KEY ([MapPoint_Id])
+    REFERENCES [MapPoints]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AddressMapPoint'
+CREATE INDEX [IX_FK_AddressMapPoint]
+ON [Addresses]
+    ([MapPoint_Id]);
+GO
+
+-- Creating foreign key on [MapPoint_Id] in table 'Pois'
+ALTER TABLE [Pois]
+ADD CONSTRAINT [FK_PoiMapPoint]
+    FOREIGN KEY ([MapPoint_Id])
+    REFERENCES [MapPoints]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PoiMapPoint'
+CREATE INDEX [IX_FK_PoiMapPoint]
+ON [Pois]
+    ([MapPoint_Id]);
+GO
+
+-- Creating foreign key on [Configuration_Id] in table 'Pois'
+ALTER TABLE [Pois]
+ADD CONSTRAINT [FK_ConfigurationPois]
+    FOREIGN KEY ([Configuration_Id])
+    REFERENCES [Configurations]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ConfigurationPois'
+CREATE INDEX [IX_FK_ConfigurationPois]
+ON [Pois]
+    ([Configuration_Id]);
+GO
+
+-- Creating foreign key on [SelectionMethod_Id] in table 'Configurations'
+ALTER TABLE [Configurations]
+ADD CONSTRAINT [FK_SelectionMethodConfiguration]
+    FOREIGN KEY ([SelectionMethod_Id])
+    REFERENCES [SelectionMethods]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SelectionMethodConfiguration'
+CREATE INDEX [IX_FK_SelectionMethodConfiguration]
+ON [Configurations]
+    ([SelectionMethod_Id]);
+GO
+
+-- Creating foreign key on [Configuration_Id] in table 'CircleAreas'
+ALTER TABLE [CircleAreas]
+ADD CONSTRAINT [FK_ConfigurationCircleArea]
+    FOREIGN KEY ([Configuration_Id])
+    REFERENCES [Configurations]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ConfigurationCircleArea'
+CREATE INDEX [IX_FK_ConfigurationCircleArea]
+ON [CircleAreas]
+    ([Configuration_Id]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------
