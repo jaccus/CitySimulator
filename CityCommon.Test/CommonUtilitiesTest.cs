@@ -18,7 +18,7 @@
         [TestMethod]
         public void ReadSqlCeCommandsFromString_GivenMultipleCommands_ExtractsThemToEnumerable()
         {
-            var actualCommands = CommonUtilities.ReadSqlCeCommandsFromString(ThreeStatementsBlockString).ToList();
+            var actualCommands = CommonUtilities.ReadSqlCeCommandsFromString(ThreeStatementsBlockString, CommonUtilities.ExtractLinesToActuallyReadFrom(ThreeStatementsBlockString)).ToList();
 
             Assert.Equals(3, actualCommands.Count);
             Assert.Equals(FirstStatement, actualCommands[0]);

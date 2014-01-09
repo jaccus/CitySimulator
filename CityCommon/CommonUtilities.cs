@@ -69,10 +69,8 @@ namespace City
             return regex.IsMatch(text);
         }
 
-        public static IEnumerable<string> ReadSqlCeCommandsFromString(string text)
+        public static IEnumerable<string> ReadSqlCeCommandsFromString(string text, IEnumerable<string> linesToReadFrom)
         {
-            var linesToReadFrom = ExtractLinesToActuallyReadFrom(text);
-
             var lines = linesToReadFrom.Where(line => !line.Trim().StartsWith("GO") && !line.Trim().StartsWith("--") && !string.IsNullOrEmpty(line.Trim()));
 
             var sb = new StringBuilder();
@@ -89,14 +87,13 @@ namespace City
             return strings;
         }
 
-        private static IEnumerable<string> ExtractLinesToActuallyReadFrom(string text)
+        public static IEnumerable<string> ExtractLinesToActuallyReadFrom(string text)
         {
             var tmpFile = Path.GetTempFileName();
             var validPart = text.Split(new[] { "Creating all tables" }, StringSplitOptions.None)[1];
             File.WriteAllText(tmpFile, validPart);
 
-            var textToActuallyParse = File.ReadAllLines(tmpFile);
-            return textToActuallyParse;
+            return File.ReadAllLines(tmpFile);
         }
     }
 }
