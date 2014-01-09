@@ -411,7 +411,7 @@ namespace City
             {
                 var ceSchema = Path.GetFullPath(Properties.Settings.Default.ce_schema);
                 string text = File.ReadAllText(ceSchema);
-                var commands = CommonUtilities.ReadSqlCeCommandsFromString(text, CommonUtilities.ExtractLinesToActuallyReadFrom(text));
+                var commands = CommonUtilities.ReadSqlCeCommandsFromString(CommonUtilities.ExtractLinesToActuallyReadFrom(text));
 
                 var cmd = new SqlCeCommand {Connection = connection};
                 connection.Open();

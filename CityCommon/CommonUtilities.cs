@@ -69,7 +69,7 @@ namespace City
             return regex.IsMatch(text);
         }
 
-        public static IEnumerable<string> ReadSqlCeCommandsFromString(string text, IEnumerable<string> linesToReadFrom)
+        public static IEnumerable<string> ReadSqlCeCommandsFromString(IEnumerable<string> linesToReadFrom)
         {
             var lines = linesToReadFrom.Where(line => !line.Trim().StartsWith("GO") && !line.Trim().StartsWith("--") && !string.IsNullOrEmpty(line.Trim()));
 
