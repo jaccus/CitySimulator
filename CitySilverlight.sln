@@ -11,12 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityCommon", "CityCommon\Ci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityCommon.Test", "CityCommon.Test\CityCommon.Test.csproj", "{1E3976A9-29DC-4528-A17F-2FB5607CCB6D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{579D9F03-F471-4F07-B75C-EFAD95AE2B21}"
-	ProjectSection(SolutionItems) = preProject
-		CitySilverlight.vsmdi = CitySilverlight.vsmdi
-		Local.testsettings = Local.testsettings
-	EndProjectSection
-EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{E8E34A9F-EFD0-4EE4-9562-82D94BD3E8C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{08DE1FD0-B5D8-4C52-92CD-D6F9E96B9FE2}"

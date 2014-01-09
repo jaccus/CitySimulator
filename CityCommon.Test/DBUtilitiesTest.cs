@@ -4,17 +4,17 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace City.Test
 {
-    [TestClass]
+    using Xunit;
+
     public class DBUtilitiesTest
     {
         const string SchemaFile = @"D:\programming\visual studio 10\projects\CitySilverlight\bin\Debug\CitySchema.sqlce";
         const string DBFile = @"D:\programming\visual studio 10\projects\CitySilverlight\bin\Debug\CityCompact.sdf";
 
-        [TestMethod]
+        [Fact]
         public void TestScriptGeneration()
         {
             using(var ctx = new CityContainer())
@@ -25,7 +25,7 @@ namespace City.Test
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void DeleteDatabaseTest()
         {
             using (var ctx = new CityContainer())
@@ -34,7 +34,7 @@ namespace City.Test
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void CreateIfNotExist()
         {
             using (var ctx = new CityContainer())
@@ -44,7 +44,7 @@ namespace City.Test
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void CheckTableExists()
         {
             if (!DBUtilities.TableExistsSqlCE("Demands"))
@@ -53,7 +53,7 @@ namespace City.Test
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void ListTablesTest()
         {
             var tables = DBUtilities.ListTablesCE();

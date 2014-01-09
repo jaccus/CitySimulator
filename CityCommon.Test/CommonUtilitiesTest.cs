@@ -1,9 +1,9 @@
 ﻿namespace City.Test
 {
     using System.Linq;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    [TestClass]
+    using Xunit;
+
     public class CommonUtilitiesTest
     {
         private const string FirstStatement = @"    ALTER TABLE [CreditCards] DROP CONSTRAINT [FK_CreditCardPerson];";
@@ -15,15 +15,15 @@
         private const string ThreeStatementsBlockString =
             "\n    ALTER TABLE [CreditCards] DROP CONSTRAINT [FK_CreditCardPerson];\nGO\n    ALTER TABLE [Transactions] DROP CONSTRAINT [FK_CreditCardTransactions];\nGO\n    ALTER TABLE [Transactions] DROP CONSTRAINT [FK_PoiTransaction];";
 
-        [TestMethod]
+        [Fact]
         public void ReadSqlCeCommandsFromString_GivenMultipleCommands_ExtractsThemToEnumerable()
         {
             var actualCommands = CommonUtilities.ReadSqlCeCommandsFromString(ThreeStatementsBlockString.Split('\n')).ToList();
 
-            Assert.AreEqual(3, actualCommands.Count);
-            Assert.AreEqual(FirstStatement, actualCommands[0]);
-            Assert.AreEqual(SecondStatement, actualCommands[1]);
-            Assert.AreEqual(ThirdStatement, actualCommands[2]);
+            Assert.Equal(3, actualCommands.Count);
+            Assert.Equal(FirstStatement, actualCommands[0]);
+            Assert.Equal(SecondStatement, actualCommands[1]);
+            Assert.Equal(ThirdStatement, actualCommands[2]);
         }
     }
 }
