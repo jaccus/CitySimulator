@@ -69,12 +69,7 @@ namespace City
             return regex.IsMatch(text);
         }
 
-        public static IEnumerable<string> ReadSqlCECommands(string sqlFile)
-        {
-            return ReadSqlCeCommandsFromString(File.ReadAllText(sqlFile));
-        }
-
-        private static IEnumerable<string> ReadSqlCeCommandsFromString(string text)
+        public static IEnumerable<string> ReadSqlCeCommandsFromString(string text)
         {
             var tmpFile = Path.GetTempFileName();
             var validPart = text.Split(new[] { "Creating all tables" }, StringSplitOptions.None)[1];

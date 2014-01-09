@@ -15,7 +15,7 @@ namespace City.Test
         {
             var text = @"D:\test.sqlce";
 
-            var commands = CommonUtilities.ReadSqlCECommands(text);
+            var commands = CommonUtilities.ReadSqlCeCommandsFromString(File.ReadAllText(text));
 
         }
     }
