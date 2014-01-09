@@ -71,29 +71,27 @@ namespace City
 
         public static IEnumerable<string> ReadSqlCECommands(string sqlFile)
         {
-            var tmpFile = Path.GetTempFileName();
+            return ReadSqlCeCommandsFromString(File.ReadAllText(sqlFile));
+        }
 
-            var allText = File.ReadAllText(sqlFile);
-            var validPart = allText.Split(new[] {"Creating all tables"}, StringSplitOptions.None)[1];
+        private static IEnumerable<string> ReadSqlCeCommandsFromString(string text)
+        {
+            var tmpFile = Path.GetTempFileName();
+            var validPart = text.Split(new[] { "Creating all tables" }, StringSplitOptions.None)[1];
             File.WriteAllText(tmpFile, validPart);
 
-            var lines = File.ReadAllLines(tmpFile)
-                .Where(line => 
-                    !line.Trim().StartsWith("GO") && 
-                    !line.Trim().StartsWith("--") && 
-                    !string.IsNullOrEmpty(line.Trim()));
+            var lines = File.ReadAllLines(tmpFile).Where(line => !line.Trim().StartsWith("GO") && !line.Trim().StartsWith("--") && !string.IsNullOrEmpty(line.Trim()));
 
             var sb = new StringBuilder();
-            
+
             foreach (var line in lines)
+            {
                 sb.Append(line);
+            }
 
             var linesTogether = sb.ToString();
 
-            var strings = linesTogether
-                .Split(';')
-                .Select(l => l + ';')
-                .Where(l => l != ";");
+            var strings = linesTogether.Split(';').Select(l => l + ';').Where(l => l != ";");
 
             return strings;
         }
