@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityModel", "CityModel\CityModel.csproj", "{4DB0EE18-E7D9-4F99-8E6D-1A0538AA3CC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityWpf", "CityWpf\CityWpf.csproj", "{11619B89-BF9B-4A4D-9E64-FD1F5B8FBF41}"
