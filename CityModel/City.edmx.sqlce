@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server Compact Edition
 -- --------------------------------------------------
--- Date Created: 09/23/2011 17:05:19
--- Generated from EDMX file: D:\programming\visual studio 10\projects\CitySilverlight\CityModel\City.edmx
+-- Date Created: 01/09/2014 15:52:21
+-- Generated from EDMX file: D:\dev\misc\CitySimulator\CityModel\City.edmx
 -- --------------------------------------------------
 
 
@@ -54,6 +54,8 @@ GO
 GO
     ALTER TABLE [Configurations] DROP CONSTRAINT [FK_SelectionMethodConfiguration];
 GO
+    ALTER TABLE [CircleAreas] DROP CONSTRAINT [FK_ConfigurationCircleArea];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -87,6 +89,8 @@ GO
     DROP TABLE [Addresses];
 GO
     DROP TABLE [SelectionMethods];
+GO
+    DROP TABLE [CircleAreas];
 GO
     DROP TABLE [PoiPoiType];
 GO

@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -330,6 +331,7 @@ namespace City
         private ObjectSet<CircleArea> _CircleAreas;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -453,11 +455,11 @@ namespace City
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -482,6 +484,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -536,6 +539,7 @@ namespace City
         partial void OnAddressLineChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -638,6 +642,7 @@ namespace City
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -664,6 +669,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -718,6 +724,7 @@ namespace City
         partial void OnNameChanged();
 
         #endregion
+
     
     }
     
@@ -749,6 +756,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -851,6 +859,7 @@ namespace City
         partial void OnRangeChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -893,6 +902,7 @@ namespace City
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -937,6 +947,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1207,6 +1218,7 @@ namespace City
         partial void OnTransactionValueMaxChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1337,6 +1349,7 @@ namespace City
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1367,6 +1380,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1469,6 +1483,7 @@ namespace City
         partial void OnNumberChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1609,6 +1624,7 @@ namespace City
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1635,6 +1651,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1689,6 +1706,7 @@ namespace City
         partial void OnCodeChanged();
 
         #endregion
+
     
     }
     
@@ -1718,6 +1736,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1796,6 +1815,7 @@ namespace City
         partial void OnDateTimeChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1914,6 +1934,7 @@ namespace City
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1938,6 +1959,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2016,6 +2038,7 @@ namespace City
         partial void OnNameChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2102,6 +2125,7 @@ namespace City
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2130,6 +2154,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2208,6 +2233,7 @@ namespace City
         partial void OnLngChanged();
 
         #endregion
+
     
     }
     
@@ -2233,6 +2259,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2263,6 +2290,7 @@ namespace City
         partial void OnIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2403,6 +2431,7 @@ namespace City
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2433,6 +2462,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2535,6 +2565,7 @@ namespace City
         partial void OnIsMaleChanged();
 
         #endregion
+
     
     }
     
@@ -2564,6 +2595,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2642,6 +2674,7 @@ namespace City
         partial void OnVicinityChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2766,6 +2799,7 @@ namespace City
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2792,6 +2826,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2870,6 +2905,7 @@ namespace City
         partial void OnFrequencyChanged();
 
         #endregion
+
     
     }
     
@@ -2897,6 +2933,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2951,6 +2988,7 @@ namespace City
         partial void OnNameChanged();
 
         #endregion
+
     
     }
     
@@ -2980,6 +3018,7 @@ namespace City
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3058,6 +3097,7 @@ namespace City
         partial void OnValueChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3176,8 +3216,10 @@ namespace City
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
