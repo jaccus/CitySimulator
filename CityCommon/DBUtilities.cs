@@ -321,7 +321,7 @@ namespace City
                 catch (Exception e)
                 {
                     Logger.LogError("Unsupported POI type '{0}'. Please consider adding this "
-                        + "type to poi types configuration file.\n{2}", lastPoiType, e.Message);
+                        + "type to poi types configuration file.\n{1}", lastPoiType, e.Message);
                 }
             }
         }
