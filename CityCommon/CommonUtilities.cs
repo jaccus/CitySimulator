@@ -71,11 +71,9 @@ namespace City
 
         public static IEnumerable<string> ReadSqlCeCommandsFromString(string text)
         {
-            var tmpFile = Path.GetTempFileName();
-            var validPart = text.Split(new[] { "Creating all tables" }, StringSplitOptions.None)[1];
-            File.WriteAllText(tmpFile, validPart);
+            var linesToReadFrom = ExtractLinesToActuallyReadFrom(text);
 
-            var lines = File.ReadAllLines(tmpFile).Where(line => !line.Trim().StartsWith("GO") && !line.Trim().StartsWith("--") && !string.IsNullOrEmpty(line.Trim()));
+            var lines = linesToReadFrom.Where(line => !line.Trim().StartsWith("GO") && !line.Trim().StartsWith("--") && !string.IsNullOrEmpty(line.Trim()));
 
             var sb = new StringBuilder();
 
@@ -89,6 +87,16 @@ namespace City
             var strings = linesTogether.Split(';').Select(l => l + ';').Where(l => l != ";");
 
             return strings;
+        }
+
+        private static IEnumerable<string> ExtractLinesToActuallyReadFrom(string text)
+        {
+            var tmpFile = Path.GetTempFileName();
+            var validPart = text.Split(new[] { "Creating all tables" }, StringSplitOptions.None)[1];
+            File.WriteAllText(tmpFile, validPart);
+
+            var textToActuallyParse = File.ReadAllLines(tmpFile);
+            return textToActuallyParse;
         }
     }
 }
